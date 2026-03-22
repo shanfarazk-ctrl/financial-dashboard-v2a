@@ -1,5 +1,4 @@
 import os
-from openai import OpenAI
 
 
 def generate_memo(summary_text: str) -> str:
@@ -8,8 +7,10 @@ def generate_memo(summary_text: str) -> str:
     if not api_key:
         return "⚠️ Missing OpenRouter API key"
 
-    try:
-        client = OpenAI(
+try:
+    from openai import OpenAI
+
+    client = OpenAI(
             api_key=api_key,
             base_url="https://openrouter.ai/api/v1",
         )
